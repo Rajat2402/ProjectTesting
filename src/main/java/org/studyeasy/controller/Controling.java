@@ -44,7 +44,7 @@ public class Controling {
 		return brand;
 	}
 
-	@PostMapping("/brands")
+	@PostMapping("/brand")
 	public BrandDto createBrand(@RequestBody Brands brands) {
 		System.out.println(brands.getBrandName());
 		BrandDto brandDto = brandService.createBrand(brands);
