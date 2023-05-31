@@ -1,0 +1,44 @@
+package org.studyeasy.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.studyeasy.Dto.BrandDto;
+import org.studyeasy.Service.BrandService;
+
+@RestController
+@RequestMapping("/showroom")
+public class Controling {
+
+	@Autowired
+	private BrandService brandService;
+
+	private static final Logger logger = LoggerFactory.getLogger(Controling.class);
+
+	@GetMapping("/brands")
+	public List<BrandDto> getList() {
+		List<BrandDto> list = new ArrayList<BrandDto>();
+		list = brandService.getList();
+		logger.info("Received get request on /brands");
+		return list;
+
+	}
+
+	@GetMapping("/brands/{brandId}")
+	public BrandDto getBrand(@PathVariable("brandId") int brandId) {
+		logger.info("Sending get request on /brands with / {}"+brandId+" to Service layer");
+		BrandDto brand = brandService.getBrand(brandId);
+		if(!(brand==null)) {
+		logger.info("Received get request on /brands/ {}"+brandId);
+		}
+		return brand;
+
+	}
+}
