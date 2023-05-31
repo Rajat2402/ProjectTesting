@@ -46,4 +46,11 @@ public class BrandDaoImpl implements BrandDao {
 		return dto;
 	}
 
+	@Override
+	public BrandDto createBrand(Brands brands) {
+		Brands savedBrand = crudRepo.save(brands);
+		BrandDto brandDto = StudentMapper.JpaToUser(savedBrand);
+		return brandDto;
+	}
+
 }

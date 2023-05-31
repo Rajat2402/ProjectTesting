@@ -8,10 +8,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.studyeasy.Dto.BrandDto;
 import org.studyeasy.Service.BrandService;
+import org.studyeasy.entity.Brands;
 
 @RestController
 @RequestMapping("/showroom")
@@ -33,12 +36,19 @@ public class Controling {
 
 	@GetMapping("/brands/{brandId}")
 	public BrandDto getBrand(@PathVariable("brandId") int brandId) {
-		logger.info("Sending get request on /brands with / {}"+brandId+" to Service layer");
+		logger.info("Sending get request on /brands with / {}" + brandId + " to Service layer");
 		BrandDto brand = brandService.getBrand(brandId);
-		if(!(brand==null)) {
-		logger.info("Received get request on /brands/ {}"+brandId);
+		if (!(brand == null)) {
+			logger.info("Received get request on /brands/ {}" + brandId);
 		}
 		return brand;
+	}
+
+	@PostMapping("/brands")
+	public BrandDto createBrand(@RequestBody Brands brands) {
+		System.out.println(brands.getBrandName());
+		BrandDto brandDto = brandService.createBrand(brands);
+		return brandDto;
 
 	}
 }

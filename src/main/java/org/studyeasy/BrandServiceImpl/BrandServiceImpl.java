@@ -9,27 +9,31 @@ import org.springframework.stereotype.Component;
 import org.studyeasy.Dto.BrandDto;
 import org.studyeasy.Service.BrandService;
 import org.studyeasy.brandDao.BrandDao;
+import org.studyeasy.entity.Brands;
 
 @Component
-public class BrandServiceImpl implements BrandService{
+public class BrandServiceImpl implements BrandService {
 
 	private static final Logger logger = LoggerFactory.getLogger(BrandService.class);
-	
+
 	@Autowired
 	private BrandDao brandDao;
-	
-	
+
 	@Override
 	public List<BrandDto> getList() {
-		
+
 		return brandDao.getList();
 	}
 
-
 	@Override
 	public BrandDto getBrand(int brandId) {
-		logger.info("Sending getBrand Request to DTO layer with Id "+brandId);
+		logger.info("Sending getBrand Request to DTO layer with Id " + brandId);
 		return brandDao.getBrand(brandId);
+	}
+
+	@Override
+	public BrandDto createBrand(Brands brands) {
+		return brandDao.createBrand(brands);
 	}
 
 }
