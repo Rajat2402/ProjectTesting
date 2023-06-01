@@ -26,6 +26,7 @@ public class Controling {
 	private static final Logger logger = LoggerFactory.getLogger(Controling.class);
 
 //Added clear comment and add one more thing, added for testing
+	//cadet 4 Developer comment has been added.
 	@GetMapping("/brands")
 	public List<BrandDto> getList() {
 		List<BrandDto> list = new ArrayList<BrandDto>();
