@@ -25,12 +25,7 @@ public class Controling {
 
 	private static final Logger logger = LoggerFactory.getLogger(Controling.class);
 
-<<<<<<< HEAD
-	//http://localhost/<Get Request>
-=======
-	//http://localhost/<Get Request> Cadet 1 Added commen, makimg some chnages
-	//Rajat is a good boy.
->>>>>>> origin/rajat
+//Added clear comment and add one more thing
 	@GetMapping("/brands")
 	public List<BrandDto> getList() {
 		List<BrandDto> list = new ArrayList<BrandDto>();
