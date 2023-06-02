@@ -27,8 +27,7 @@ public class Controling {
 
 //Added clear comment and add one more thing, added for testing
 	//cadet 4 Developer comment has been added.
-	//Rajat added new feature in this.
-	//Feature added by Himani.
+	//Feature added by cadedev1
 	@GetMapping("/brands")
 	public List<BrandDto> getList() {
 		List<BrandDto> list = new ArrayList<BrandDto>();
